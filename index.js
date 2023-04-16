@@ -18,8 +18,6 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  computerSelection = getComputerChoice();
-
   if (playerSelection == "rock") {
     if (computerSelection == "rock") {
       ties++;
@@ -53,8 +51,14 @@ function playRound(playerSelection, computerSelection) {
       ties++;
       return "Draw!";
     }
+  } else if (
+    playerSelection === null ||
+    playerSelection === undefined ||
+    playerSelection === ""
+  ) {
+    return "No input/canceled";
   } else {
-    alert("wrong input");
+    return "wrong input";
   }
 }
 
@@ -73,16 +77,19 @@ function game() {
     scoreLose = 0;
     ties = 0;
     alert("You Win the Round!");
+    console.log("You Win the Round!");
   } else if (scoreWin < scoreLose) {
     scoreWin = 0;
     scoreLose = 0;
     ties = 0;
     alert("You lose the Round!");
+    console.log("You lose the Round!");
   } else {
     scoreWin = 0;
     scoreLose = 0;
     ties = 0;
     alert("It's a Tie!");
+    console.log("It's a Tie!");
   }
 }
 
