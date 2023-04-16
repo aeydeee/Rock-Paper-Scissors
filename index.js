@@ -18,33 +18,33 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  if (playerSelection == "rock") {
-    if (computerSelection == "rock") {
+  if (playerSelection === "rock") {
+    if (computerSelection === "rock") {
       ties++;
       return "Draw!";
-    } else if (computerSelection == "paper") {
+    } else if (computerSelection === "paper") {
       scoreLose++;
       return "You Lose!";
     } else {
       scoreWin++;
       return "You Win!";
     }
-  } else if (playerSelection == "paper") {
-    if (computerSelection == "rock") {
+  } else if (playerSelection === "paper") {
+    if (computerSelection === "rock") {
       scoreWin++;
       return "You Win! ";
-    } else if (computerSelection == "paper") {
+    } else if (computerSelection === "paper") {
       ties++;
       return "Draw!";
     } else {
       scoreLose++;
       return "You Lose!";
     }
-  } else if (playerSelection == "scissors") {
-    if (computerSelection == "rock") {
+  } else if (playerSelection === "scissors") {
+    if (computerSelection === "rock") {
       scoreLose++;
       return "You lose!";
-    } else if (computerSelection == "paper") {
+    } else if (computerSelection === "paper") {
       scoreWin++;
       return "You Win!";
     } else {
@@ -68,7 +68,9 @@ function game() {
     let computerSelection = getComputerChoice();
     let result = playRound(playerSelection, computerSelection);
 
-    alert(`${result} You: ${scoreWin} Bot: ${scoreLose} Tie: ${ties}`);
+    alert(
+      `${result} You picked ${playerSelection}, Bot picked ${computerSelection}\nYou:${scoreWin} Bot:${scoreLose} Tie: ${ties}`
+    );
     console.log(`${result} You: ${scoreWin} Bot: ${scoreLose} Tie: ${ties}`);
   }
 
