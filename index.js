@@ -12,7 +12,7 @@ function getComputerChoice() {
   } else if (random === 2) {
     computer = "paper";
   } else {
-    computer = "scissor";
+    computer = "scissors";
   }
   return computer;
 }
@@ -42,7 +42,7 @@ function playRound(playerSelection, computerSelection) {
       scoreLose++;
       return "You Lose!";
     }
-  } else if (playerSelection == "scissor") {
+  } else if (playerSelection == "scissors") {
     if (computerSelection == "rock") {
       scoreLose++;
       return "You lose!";
@@ -54,19 +54,36 @@ function playRound(playerSelection, computerSelection) {
       return "Draw!";
     }
   } else {
-    console.log("canceled/wrong input");
+    alert("wrong input");
   }
-  console.log(`${result}`);
 }
 
 function game() {
-  let playerSelection = prompt("Rock, paper, or scissors?").toLowerCase();
-  let result = playRound(playerSelection);
+  for (let i = 0; i < 5; i++) {
+    let playerSelection = prompt("Rock, paper, or scissors?").toLowerCase();
+    let computerSelection = getComputerChoice();
+    let result = playRound(playerSelection, computerSelection);
 
-  console.log(result);
-  console.log(`You: ${scoreWin} Bot: ${scoreLose} Tie: ${ties}`);
+    alert(`${result} You: ${scoreWin} Bot: ${scoreLose} Tie: ${ties}`);
+    console.log(`${result} You: ${scoreWin} Bot: ${scoreLose} Tie: ${ties}`);
+  }
+
+  if (scoreWin > scoreLose) {
+    scoreWin = 0;
+    scoreLose = 0;
+    ties = 0;
+    alert("You Win the Round!");
+  } else if (scoreWin < scoreLose) {
+    scoreWin = 0;
+    scoreLose = 0;
+    ties = 0;
+    alert("You lose the Round!");
+  } else {
+    scoreWin = 0;
+    scoreLose = 0;
+    ties = 0;
+    alert("It's a Tie!");
+  }
 }
 
-game();
-game();
 game();
